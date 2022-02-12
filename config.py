@@ -1,6 +1,6 @@
-from flask import Config
+import os
 
-class config:
+class  Config:
     '''
     General configuration parent class
     '''
@@ -19,3 +19,8 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     DEBUG = True
+
+config_options = {
+'development':DevConfig,
+'production':ProdConfig
+}
