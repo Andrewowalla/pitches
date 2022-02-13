@@ -2,6 +2,7 @@ import os
 
 class  Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://andrewowalla:mazla08@localhost/pitches'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     @staticmethod
     def init_app(app):
