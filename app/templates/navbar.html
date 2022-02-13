@@ -9,7 +9,14 @@
         <a class="nav-link active" aria-current="page" href="#">Home</a>
         <a class="nav-link" href="#">Pitches</a>
         <a class="nav-link" href="#">Create Pitch</a>
-        <a class="nav-link" href="#">Sign In</a>
+        <ul class="nav navbar-nav navbar-right">
+          {% if current_user.is_authenticated %}
+          <li style="color:white;padding:15px;">{{current_user.username}}</li>
+          <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+          {% else %}
+          <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+          {%endif%}
+        </ul>
       </div>
     </div>
   </div>
