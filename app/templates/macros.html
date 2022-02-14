@@ -1,18 +1,19 @@
-<div class="container">
-    {% macro displayPitches(pitch_list) %}
-        {% for pitch in pitch_list %}
-        <div class="row">
-        <div class="col-md-6">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-            <h2> {{ pitch.title}} </h2>
-          </div>
-          <div class="panel-body">
-            <p> {{ pitch.pitch }}</p>
-        </div>
+{% macro displayPitches(pitches) %}
+
+    {% for pitch in pitches %}
+
+    <div class="row">
+
+      <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+        <h4>Author :</h4>
+        <p>{{pitch.user.username}}</p>
+      </div>
+      <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+        <h2> <a href="{{url_for('main.single_pitch',category=pitch.category)}}">{{pitch.title}}</a> </h2>
       </div>
     </div>
-        {% endfor %}
-    {% endmacro %}
-</div>
+
+    {% endfor %}
+{% endmacro %}
+
     

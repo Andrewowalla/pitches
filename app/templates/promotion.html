@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{%block content%}
+{%for pitch in promotion%}
+<div class="row ">
+  <div class="col-md-6 mb-3">
+    
+    <div class="card">
+      
+      <div class="card-body">
+        <h5>Name: {{pitch.author.username}}</h5>
+
+        <h6 class="card-title">Category: {{pitch.category}}</h6>
+        
+        <p class="card-text"> Pitch: {{pitch.pitch}}</p>
+        
+        <a href="{{url_for('main.new_comment', pitch_id =pitch.id)}}"> <button type="button" class="btn btn-light-green btn-md">Comment</button></button></a> 
+        <a href=""><button><i class="fab fa-gratipay fa-2x"></i></button></a>
+       <a href=""><button><i class="fas fa-heart-broken fa-2x"></i></button></a> 
+      </div>
+
+    </div>
+    
+  </div>
+</div>
+{%endfor%}
+{%endblock%}
