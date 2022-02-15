@@ -1,3 +1,4 @@
+from itertools import product
 from flask import render_template,request,redirect,url_for, abort
 from . import main
 from flask_login import login_required, current_user
@@ -10,7 +11,13 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    return render_template('index.html')
+    pitches = Pitch.query.all()
+    product = Pitch.query.filter_by(category = 'Product').all()
+    interview = Pitch.query.filter_by(category = 'Interview').all()
+    promotion = Pitch.query.filter_by(category = 'Promotion').all()
+    Pickup = Pitch.query.filter_by(category = 'Pickup')
+
+    return render_template('index.html', product = product, interview = interview, promotion = promotion, Pickup = Pickup )
 
 @main.route('/pitches/new_pitch',methods = ['GET','POST'])
 @login_required
