@@ -19,10 +19,7 @@ class Pitch(db.Model):
     def save_pitch(self):
       db.session.add(self)
       db.session.commit()
-      
-     
-      
-       
+        
     def __repr__(self):
         return f'Pitch {self.post}'
 
@@ -36,7 +33,8 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-    pitches=db.relationship('Pitch',backref = 'user',lazy="dynamic")
+    pitches = db.relationship('Pitch',backref = 'author',lazy = "dynamic")
+    comments = db.relationship('Comment',backref = 'author',lazy = "dynamic") 
 
     @property
     def password(self):

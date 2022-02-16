@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%for pitch in pitches[::-1]%}
+
+<div class="row ">
+  <div class="col-md-6 mb-3">
+
+    <div class="card">
+
+      
+      <div class="view overlay">
+        <img class="card-img-top" src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1184382530%2F0x0.jpg"
+          alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      
+      <div class="card-body">
+
+        
+        {%if user == current_user%}
+        <h5>Name: {{user.username}}</h5>
+        {%endif%}
+        <h6 class="card-title">Category: {{pitch.category}}</h6>
+        <!--Text-->
+        <p class="card-text"> Pitch: {{pitch.pitch}}</p>
+        
+        <a href="{{url_for('main.new_comment', pitch_id =pitch.id)}}"> <button type="button" class="btn btn-light-green btn-md">Comment</button></button></a> 
+        <a href=""><i class="fab fa-gratipay fa-2x"></i></a>
+        <i class="fas fa-heart-broken fa-2x"></i>
+      </div>
+
+    </div>
+    
+  </div>
+</div>
+{%endfor%}
